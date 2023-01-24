@@ -39,7 +39,7 @@ def get_films():
     for td in soup.find_all('td', attrs=ATTRS_SEARCH):
         film = Film()
         film.title, film.genre = [i.contents[0] for i in td.find_all('font')]
-        film.description = td.br.next_element.next_element
+        film.description = td.br.next_element.next_element.text
         for tr in td.find('table', attrs={'width': '100%'}).find_all('tr'):
             table = tr.find('table')
             if not table:
